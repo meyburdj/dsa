@@ -24,3 +24,4 @@ function validParentheses(string) {
     }
     return stack.length === 0;
 }
+
