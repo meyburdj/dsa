@@ -5,7 +5,7 @@
  * all values to the right. Multiple both
  */
 
-productExceptSelf(arr){
+function productExceptSelf(arr) {
     const leftProducts = new Array(arr.length);
     const rightProducts = new Array(arr.length);
 
