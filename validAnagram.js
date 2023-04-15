@@ -25,3 +25,4 @@ function freqCounter(string) {
     }
     return letters;
 }
+

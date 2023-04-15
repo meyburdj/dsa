@@ -70,6 +70,7 @@ function levelOrderTraversal(root) {
 
 //index implementation. There is a custon two queu approach that is complicated.
 //this avoids the use of shift, but does use more memory.
+
 /**Create a queu and index counter. Build the queue based on lefts and rights, but
  * do the analysis based on the incrementing index position. While loop ends when 
  * index is out of bounds of the queu length
