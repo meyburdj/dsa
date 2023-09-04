@@ -26,3 +26,22 @@ function freqCounter(string) {
     return letters;
 }
 
+function validAna(s, t) {
+    if (s.length !== t.length) return false;
+    let freqCounterS = charCounter(s);
+    let freqCounterT = charCounter(t);
+
+    for (let letter in freqCounterS) {
+        if (freqCounterS[letter] !== freqCounterT[letter]) return false;
+    }
+
+    return true;
+}
+
+function charCounter(phrase) {
+    let freqCounter = {};
+    for (let char of phrase) {
+        freqCounter[char] = (freqCounter[char] || 0) + 1;
+    }
+    return freqCounter;
+}
