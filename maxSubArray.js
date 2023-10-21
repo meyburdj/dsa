@@ -12,3 +12,24 @@ function maxSubArray(nums) {
     }
     return maxSum;
 }
+
+/**using sliding windows instead */
+function maxSubarraySum(nums) {
+    if (nums.length === 0) return 0;
+
+    let maxSum = nums[0];
+    let currSum = nums[0];
+    let left = 0;
+
+    for (let right = 1; right < nums.length; right++) {
+        if (currSum < 0 && nums[right] > currSum) {
+            left = right;
+            currSum = nums[right];
+        } else {
+            currSum += nums[right];
+        }
+        maxSum = Math.max(maxSum, currSum);
+    }
+
+    return maxSum;
+}
