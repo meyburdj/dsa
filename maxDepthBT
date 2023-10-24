@@ -1,4 +1,4 @@
-function maxDepthBinaryTree(root, depth = 1) {
+function maxDepthBinaryTree(root, depth = 0) {
     if (!root) return depth;
 
     depth++;
