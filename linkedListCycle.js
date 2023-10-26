@@ -1,3 +1,4 @@
+//use set and recursion to see if you hit something you've already done
 function hasCycle(head, nodes = new Set()) {
     if (!head) return false;
     if (nodes.has(head)) return true;
@@ -7,17 +8,21 @@ function hasCycle(head, nodes = new Set()) {
     return hasCycle(head.next, nodes);
 };
 
-//Tortoise and the Hare
+//fast/slow pointers solution
 function hasCycleTwo(head) {
     if (!head) return false;
 
     let slow = head;
-    let fast = head.next;
+    let fast = head;
 
-    while (slow !== fast) {
-        if (!fast || !fast.next) return false;
+    while (fast && fast.next) {
         slow = slow.next;
         fast = fast.next.next;
+
+        if (slow === fast) {
+            return true;
+        }
     }
-    return true;
+
+    return false;
 }

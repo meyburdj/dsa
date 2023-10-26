@@ -1,9 +1,15 @@
-function maxDepthBinaryTree(root, depth = 1) {
-    if (!root) return depth;
+/**
+ * create a memo to track the amount of steps possible at each n. 
+ * each subsequent n adds to the memo. in end read off the memo.
+ * 
+ * whenever you add another step, it can either go up by 1 or up by 2 from previous
+ */
+function climbStairs(n, memo = {}) {
+    if (n <= 1) return 1;
 
-    depth++;
+    if (n in memo) return memo[n];
 
-    return Math.max(maxDepthBinaryTree(root.left, depth),
-        maxDepthBinaryTree(root.right, depth)
-    );
+    memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo);
+
+    return memo[n];
 }
