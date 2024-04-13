@@ -1,25 +1,31 @@
-class TreeNode {
-    val: number
-    left: TreeNode | null = null
-    right: TreeNode | null = null
-
-    constructor(val: number, left: TreeNode | null = null, right: TreeNode | null = null) {
-        this.val = val
-        this.left = left || null
-        this.right = right || null
-    }
+interface Text {
+    startIndex: number;
+    endIndex: number;
+    content: string;
 }
-function validateBinarySearchTree(
-    root: TreeNode | null,
-    lower: number = -Infinity,
-    upper: number = Infinity
-): boolean {
-    if (!root) return true;
 
-    if (root.val <= lower || root.val >= upper) return false;
+interface Sentence {
+    texts: Text[]
+}
 
-    return (
-        validateBinarySearchTree(root.left, lower, root.val) &&
-        validateBinarySearchTree(root.right, root.val, upper)
-    );
+/**
+ * takes in array of strings, returns array of Text for each word
+ */
+
+function createSentence(chars: string[]): Sentence {
+
+    let texts: Text[] = []
+
+    let index = 0
+    for (let word of chars) {
+        let text: Text = {
+            startIndex: index,
+            endIndex: index + word.length - 1,
+            content: word
+        }
+        texts.push(text)
+        index += word.length
+    }
+
+    return { texts }
 }
